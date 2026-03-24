@@ -1,25 +1,142 @@
+/* Cores e Texto */
 .auto-card {
-    border: 1px solid #ddd;
-    padding: 16px;
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    display: flex;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    width: 280px;
+    height: 200px; /* Aumentado para caber Título + Imagem Capa */
+    margin: 15px;
+    position: relative;
+    color: #333; /* Força o texto a ser escuro */
+    text-align: left;
+}
+
+/* Estado Expandido */
+.auto-card.expanded {
+    width: 850px; 
+    height: auto;
+    min-height: 350px;
+    cursor: default;
+    z-index: 100;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.auto-card.blurred {
+    filter: blur(4px) grayscale(80%);
+    opacity: 0.4;
+    transform: scale(0.95);
+    pointer-events: none;
+}
+
+/* --- SEÇÃO DA CAPA (Esquerda) --- */
+.card-capa-section {
+    min-width: 280px;
+    width: 280px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fcfcfc;
+    flex-shrink: 0; /* Impede que a capa amasse ao expandir */
+}
+
+.card-capa-section h2 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+    color: #1a1a1a;
+    text-align: center;
+}
+
+.imagem-capa {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
     border-radius: 8px;
+    border: 1px solid #eee;
 }
 
-/* Estilo quando NÃO tem código */
-.auto-card.text-only {
-    background-color: #f9f9f9;
+.to-open {
+    margin-top: 15px;
+    font-size: 0.8rem;
+    color: #646CFF;
+    font-weight: bold;
 }
 
-/* Estilo quando TEM código */
-.auto-card.with-code {
-    background-color: #ffffff;
-    border-left: 5px solid #007bff;
+/* --- SEÇÃO DE DETALHES (Direita) --- */
+.card-detalhe-section {
+    padding: 25px;
+    flex-grow: 1;
+    border-left: 1px solid #eee;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    animation: slideIn 0.4s ease-out;
 }
 
-code {
+.info-block strong, .dica-block strong {
+    color: #646CFF;
     display: block;
-    background: #272822;
-    color: #f8f8f2;
-    padding: 10px;
-    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+/* Container do Código */
+.codigo-container {
+    border-radius: 8px;
+    border: 1px solid #333;
+    background: #2d2d2d;
+    overflow: hidden;
+}
+
+.codigo-header {
+    background: #1a1a1a;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+}
+
+.btn-alternar {
+    background: #646CFF;
+    color: white;
+    border: none;
+    padding: 4px 10px;
     border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.75rem;
+}
+
+.imagem-codigo-conteudo {
+    width: 100%;
+    display: block;
+}
+
+pre {
+    margin: 0.01;
+    padding: 15px;
+    color: #f8f8f2;
+    font-size: 0.85rem;
+    overflow-x: auto;
+    text-align: left;
+}
+
+.btn-fechar {
+    align-self: flex-end;
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
 }
