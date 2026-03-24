@@ -1,37 +1,75 @@
 .footer {
   background-color: #161d31;
   color: white;
-  padding: 50px; 
-  margin-top: 40px;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
+  padding: 1rem 2rem; 
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-sizing: border-box;
+  z-index: 1000;
+  
+  /* Fonte mais "bonitinha" e moderna */
+  font-family: 'Poppins', sans-serif;
+
   display: flex;
-  flex-direction: row;
-  gap: 200px;
+  justify-content: center; /* Centraliza o conteúdo principal (as divs de texto) */
+  align-items: center;
 }
 
-.footer .div {
-  text-align: center; 
+.footer-info {
+  text-align: center;
+}
+
+.footer-info p {
+  margin: 2px 0;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+/* Deixa o nome da empresa em negrito */
+.footer-info p strong {
+  font-weight: 600;
+  color: #00d2ff; /* Um tom de azul claro para dar um destaque sutil */
 }
 
 .suporte {
   display: flex;
   align-items: center;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  position: absolute;
+  right: 2rem;
+
+}
+
+.suporte:hover {
+  transform: scale(1.05); /* Efeito de crescer levemente ao passar o mouse */
 }
 
 .suporte a {
-  font-size: 25px;
-  color: aliceblue;
-  margin-left: 10px; 
+  font-size: 1.1rem;
+  color: rgb(218, 218, 214);
   text-decoration: none;
-  font-weight: bold;
-  margin-right: 15px;
-  justify-content: right;
+  font-weight: 600;
 }
 
 .suporte img {
-  width: 60px; 
-  height: 60px; 
-  margin-right: 10px; 
+  width: 50px; 
+  height: 50px; 
+  margin-right: 1px;
+}
+
+/* Ajuste para telas pequenas (Mobile) */
+@media (max-width: 768px) {
+  .footer {
+    position: relative; /* No mobile é melhor não ser fixo para não ocupar tela */
+    flex-direction: column;
+    padding: 1.5rem;
+  }
+  
+  .suporte {
+    position: static; /* Volta para o fluxo normal no celular */
+    margin-top: 15px;
+  }
 }

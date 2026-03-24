@@ -5,7 +5,7 @@ function Footer() {
         <>
             <footer className="footer">
               <div>
-                    <p>© 2026 STEAM PLAYBOX.</p>
+                    <p>© 2026 CARDS DE ESTUDO</p>
                     <p>Desenvolvido por Men's Caves</p>
                 </div>
                 <section className="suporte">
