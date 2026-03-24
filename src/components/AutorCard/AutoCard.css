@@ -1,0 +1,25 @@
+.auto-card {
+    border: 1px solid #ddd;
+    padding: 16px;
+    border-radius: 8px;
+}
+
+/* Estilo quando NÃO tem código */
+.auto-card.text-only {
+    background-color: #f9f9f9;
+}
+
+/* Estilo quando TEM código */
+.auto-card.with-code {
+    background-color: #ffffff;
+    border-left: 5px solid #007bff;
+}
+
+code {
+    display: block;
+    background: #272822;
+    color: #f8f8f2;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 4px;
+}

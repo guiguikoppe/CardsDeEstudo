@@ -1,17 +1,17 @@
+//card de estudo para o autor, onde ele pode colocar um titulo, uma explicação, um exemplo de código e uma dica para os leitores. O card tem um estilo diferente dependendo se o exemplo de código foi fornecido ou não.
+
 import './AutoCard.css'
 
-function AutoCard({nome,bio,online,imagem}){
-    const statusTexto = online ? 'online' : 'offline'
+function AutoCard({titulo,explicacao,exemploC,dica}){
+    const statusTexto = exemploC ? 'exemploC' : 'offline'
 
     return (
-    <section className="auto-card">
-        <img src={imagem} alt={`Avatar de ${nome}`} className="auto-imagem" />
-        <h2>
-            {nome} <span className={`status-dot ${online ? 'online' : 'offline'}`}></span>
-        </h2>
-        <p>{bio}</p>
-        <small>{statusTexto}</small>
-    </section>
+        <div className={`auto-card ${statusTexto}`}>
+            <h2>{titulo}</h2>
+            <p>{explicacao}</p>
+            {exemploC && <p><strong>Exemplo de Código:</strong> {exemploC}</p>}
+            {dica && <p><em>Dica:</em> {dica}</p>}
+        </div>
     )
 }
 
