@@ -30,7 +30,7 @@ function AutoCard({ titulo, explicacao, imagemCodigo, textoCodigo, dica, isExpan
                     
                     <div className="codigo-container">
                         <div className="codigo-header">
-                            <strong>Exemplo de Código:</strong>
+                            <strong>Exemplo de Códigos:</strong>
                             <button onClick={handleTrocarConteudo} className="btn-trocar">
                                 {mostrandoTexto ? 'voltar' : 'Ler/Copiar Texto'}
                             </button>

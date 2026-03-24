@@ -15,6 +15,7 @@ body {
 h1 {
   color: #1a1a1a;
   margin-bottom: 2rem;
+  margin: 0;
 }
 
 .card-gallery {
