@@ -3,7 +3,7 @@ import './Header.css'
 function Header({ isOpen, toggleMenu }) {
   return (
     <header className="header">
-      <h1>STEAM PLAYBOX</h1>
+      <h1>CARDS DE ESTUDO</h1>
       <button
         className={'menu-toggle ' + (isOpen ? 'active' : '')}
         onClick={toggleMenu}
