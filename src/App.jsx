@@ -1,18 +1,23 @@
-import { useState } from 'react';
-import AutoCard from './components/AutorCard/AutoCard';
-import './App.css';
+import './App.css'
+import { useState } from 'react'
+import Header from './components/Header/Header'
+import Nav from './components/Nav/Nav'
+import Subheader from './components/Subheader/Subheader'
+import Footer from './components/Footer/Footer'
 
+function App() {
+  const [isOpen, setIsOpen] = useState(false)
+
+  const toggleMenu = () => setIsOpen(!isOpen)
 
 function App() {
   return (
-    <div className="App">
-      <AutoCard 
-        titulo="React"
-        explicacao="React é uma biblioteca JavaScript para criar interfaces de usuário."
-        exemploC="const element = <h1>Hello, world!</h1>;"
-        dica="Comece com o tutorial oficial do React."
-      />
-    </div>
+    <>
+      <Header isOpen={isOpen} toggleMenu={toggleMenu} />
+      <Nav isOpen={isOpen} />
+      <Subheader/>
+      <Footer/>
+    </>
   )
 }
 

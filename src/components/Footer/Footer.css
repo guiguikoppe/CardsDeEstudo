@@ -1,0 +1,37 @@
+.footer {
+  background-color: #161d31;
+  color: white;
+  padding: 50px; 
+  margin-top: 40px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 200px;
+}
+
+.footer .div {
+  text-align: center; 
+}
+
+.suporte {
+  display: flex;
+  align-items: center;
+}
+
+.suporte a {
+  font-size: 25px;
+  color: aliceblue;
+  margin-left: 10px; 
+  text-decoration: none;
+  font-weight: bold;
+  margin-right: 15px;
+  justify-content: right;
+}
+
+.suporte img {
+  width: 60px; 
+  height: 60px; 
+  margin-right: 10px; 
+}

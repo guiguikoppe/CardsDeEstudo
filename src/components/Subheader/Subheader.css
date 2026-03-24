@@ -1,0 +1,15 @@
+.subheader {
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.subheader h1 {
+  font-size: 33.6px;
+  margin-bottom: 15px;
+}
+
+.subheader p {
+  font-size: 17.6px;
+}
