@@ -10,7 +10,6 @@ function App() {
 
   const toggleMenu = () => setIsOpen(!isOpen)
 
-function App() {
   return (
     <>
       <Header isOpen={isOpen} toggleMenu={toggleMenu} />
@@ -20,5 +19,6 @@ function App() {
     </>
   )
 }
+
 
 export default App
