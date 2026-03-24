@@ -1,0 +1,62 @@
+/* App.css */
+
+/* Reset e Configurações Globais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f0f2f5;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 100px; /* Espaço para o Header fixo */
+  padding-bottom: 80px; /* Espaço para o Footer fixo */
+  min-height: 100vh;
+}
+
+/* Título Principal */
+main h1 {
+  color: #054547;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Grid de Cards */
+.card-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+/* Efeito de Blur quando um card está expandido */
+.card-gallery:has(.expanded) .card:not(.expanded) {
+  filter: blur(4px);
+  opacity: 0.6;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  body {
+    padding-top: 80px;
+    padding-bottom: 0; /* Footer deixa de ser fixo no mobile conforme CSS do Footer */
+  }
+
+  .card-gallery {
+    grid-template-columns: 1fr;
+    padding: 1rem;
+  }
+
+  main h1 {
+    font-size: 1.8rem;
+  }
+}
+
