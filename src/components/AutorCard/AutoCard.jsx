@@ -1,57 +1,73 @@
-// AutoCard.jsx
 import { useState } from 'react';
 import './AutoCard.css';
 
-function AutoCard({ titulo, explicacao, imagemCodigo, textoCodigo, dica, isExpanded, onToggleExpand, isBlurred }) {
-    // Estado interno para controlar se mostra imagem ou texto do código
+function AutoCard({ categoria, cor, titulo, explicacao, imagemCodigo, textoCodigo, dica, isExpanded, onToggleExpand, isBlurred }) {
     const [mostrandoTexto, setMostrandoTexto] = useState(false);
 
-    // Impede que o clique no botão de trocar feche o card inteiro
     const handleTrocarConteudo = (e) => {
         e.stopPropagation(); 
         setMostrandoTexto(!mostrandoTexto);
     };
 
-    // Determina as classes CSS baseadas no estado
-    const cardClasses = `auto-card ${isExpanded ? 'expanded' : 'collapsed'} ${isBlurred ? 'blurred' : ''}`;
+    // Gera o nome da classe baseado na categoria (ex: cat-fundamentos)
+    const categoriaClass = `cat-${categoria.toLowerCase().replace(/\s/g, '-')}`;
+    const cardClasses = `auto-card ${categoriaClass} ${isExpanded ? 'expanded' : 'collapsed'} ${isBlurred ? 'blurred' : ''}`;
 
     return (
         <div className={cardClasses} onClick={onToggleExpand}>
-            {/* --- CONTEÚDO INICIAL (SEMPRE VISÍVEL) --- */}
-            <div className="card-initial-content">
-                <h2>{titulo}</h2>
-                <img src={imagemCodigo} alt={`Exemplo de código para ${titulo}`} className="capa-imagem" />
+            
+            {/* --- SEÇÃO DA ESQUERDA (Capa Colorida) --- */}
+            <div className="card-capa-section">
+                <div className="categoria-container">
+                    <span className="badge-categoria">
+                        <span className="dot">{cor}</span>
+                        {categoria}
+                    </span>
+                </div>
+
+                <div className="capa-principal">
+                    <h2>{titulo}</h2>
+                    <p className="resumo-card">Toque para explorar fundamentos e exemplos.</p>
+                </div>
+
+                {!isExpanded && <span className="to-open">Ver detalhes →</span>}
             </div>
 
-            {/* --- CONTEÚDO EXPANDIDO (VISÍVEL APENAS QUANDO EXPANDIDO) --- */}
+            {/* --- SEÇÃO DA DIREITA (Detalhes - fundo branco para leitura) --- */}
             {isExpanded && (
-                <div className="card-expanded-content" onClick={(e) => e.stopPropagation()}>
-                    <p className="explicacao">{explicacao}</p>
+                <div className="card-detalhe-section" onClick={(e) => e.stopPropagation()}>
+                    <div className="conteudo-textual">
+                        <h3 className="detalhe-titulo">{titulo}</h3>
+                        <p className="explicacao">{explicacao}</p>
+                    </div>
                     
                     <div className="codigo-container">
                         <div className="codigo-header">
-                            <strong>Exemplo de Códigos:</strong>
-                            <button onClick={handleTrocarConteudo} className="btn-trocar">
-                                {mostrandoTexto ? 'voltar' : 'Ler/Copiar Texto'}
+                            <strong>Snippet de Código:</strong>
+                            <button onClick={handleTrocarConteudo} className="btn-alternar">
+                                {mostrandoTexto ? 'Ver Badge' : 'Ler/Copiar Texto'}
                             </button>
                         </div>
 
                         <div className="codigo-body">
                             {mostrandoTexto ? (
-                                <pre><code>{textoCodigo}</code></pre>
+                                <div className="pre-wrapper">
+                                    <pre><code>{textoCodigo}</code></pre>
+                                </div>
                             ) : (
-                                <img src={imagemCodigo} alt="Código Ampliado" className="imagem-codigo-ampliada" />
+                                <div className="badge-preview">
+                                    <img src={imagemCodigo} alt="Badge de Código" />
+                                </div>
                             )}
                         </div>
                     </div>
                     
                     {dica && (
-                        <p className="dica">
-                            <strong>Dica:</strong> <em>{dica}</em>
-                        </p>
+                        <div className="dica-block">
+                            <p><strong>💡 Dica Pro:</strong> <em>{dica}</em></p>
+                        </div>
                     )}
                     
-                    {/* Botão opcional para fechar no rodapé */}
                     <button className="btn-fechar" onClick={onToggleExpand}>Fechar</button>
                 </div>
             )}

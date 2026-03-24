@@ -1,142 +1,130 @@
-/* Cores e Texto */
+/* --- ESTRUTURA BASE --- */
 .auto-card {
-    background: #ffffff;
-    border-radius: 12px;
-    border: 1px solid #e0e0e0;
+    border-radius: 16px;
     cursor: pointer;
     display: flex;
     overflow: hidden;
     transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
     width: 280px;
-    height: 200px; /* Aumentado para caber Título + Imagem Capa */
+    height: 300px;
     margin: 15px;
     position: relative;
-    color: #333; /* Força o texto a ser escuro */
-    text-align: left;
+    border: none;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
 
-/* Estado Expandido */
 .auto-card.expanded {
-    width: 850px; 
+    width: 900px;
     height: auto;
-    min-height: 350px;
-    cursor: default;
+    min-height: 480px;
     z-index: 100;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
 .auto-card.blurred {
-    filter: blur(4px) grayscale(80%);
-    opacity: 0.4;
-    transform: scale(0.95);
+    filter: blur(4px) grayscale(100%);
+    opacity: 0.3;
     pointer-events: none;
 }
 
-/* --- SEÇÃO DA CAPA (Esquerda) --- */
+/* --- CORES POR CATEGORIA (BACKGROUNDS) --- */
+.cat-fundamentos { background: linear-gradient(135deg, #2196f3, #1565c0); color: white; }
+.cat-jsx { background: linear-gradient(135deg, #9c27b0, #6a1b9a); color: white; }
+.cat-components { background: linear-gradient(135deg, #4caf50, #2e7d32); color: white; }
+.cat-props { background: linear-gradient(135deg, #ff9800, #ef6c00); color: white; }
+.cat-state { background: linear-gradient(135deg, #f44336, #c62828); color: white; }
+.cat-renderização { background: linear-gradient(135deg, #ffeb3b, #fbc02d); color: #333; }
+.cat-hooks { background: linear-gradient(135deg, #009688, #00695c); color: white; }
+.cat-conceitos-extras { background: linear-gradient(135deg, #607d8b, #37474f); color: white; }
+
+/* --- SEÇÕES INTERNAS --- */
 .card-capa-section {
     min-width: 280px;
-    width: 280px;
-    padding: 20px;
+    padding: 25px;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #fcfcfc;
-    flex-shrink: 0; /* Impede que a capa amasse ao expandir */
+    justify-content: space-between;
 }
 
-.card-capa-section h2 {
-    font-size: 1.3rem;
-    margin-bottom: 15px;
-    color: #1a1a1a;
-    text-align: center;
-}
-
-.imagem-capa {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 8px;
-    border: 1px solid #eee;
-}
-
-.to-open {
-    margin-top: 15px;
-    font-size: 0.8rem;
-    color: #646CFF;
-    font-weight: bold;
-}
-
-/* --- SEÇÃO DE DETALHES (Direita) --- */
 .card-detalhe-section {
-    padding: 25px;
-    flex-grow: 1;
-    border-left: 1px solid #eee;
     background: #ffffff;
+    color: #333;
+    padding: 35px;
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    animation: slideIn 0.4s ease-out;
+    animation: slideRight 0.4s ease;
 }
 
-.info-block strong, .dica-block strong {
-    color: #646CFF;
-    display: block;
-    margin-bottom: 5px;
+.capa-principal h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    line-height: 1.2;
 }
 
-/* Container do Código */
+.resumo-card {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.badge-categoria {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.75rem;
+    backdrop-filter: blur(5px);
+}
+
+/* --- CONTEÚDO TÉCNICO --- */
 .codigo-container {
+    background: #282a36;
     border-radius: 8px;
-    border: 1px solid #333;
-    background: #2d2d2d;
     overflow: hidden;
+    border: 1px solid #444;
 }
 
 .codigo-header {
-    background: #1a1a1a;
-    padding: 8px 15px;
+    background: #191a21;
+    padding: 10px 15px;
     display: flex;
     justify-content: space-between;
-    align-items: center;
-    color: #fff;
+    color: #61dafb;
+    font-size: 0.8rem;
 }
 
-.btn-alternar {
-    background: #646CFF;
-    color: white;
-    border: none;
-    padding: 4px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.75rem;
+.badge-preview {
+    background: #fff;
+    padding: 20px;
+    text-align: center;
 }
 
-.imagem-codigo-conteudo {
-    width: 100%;
-    display: block;
-}
-
-pre {
-    margin: 0.01;
-    padding: 15px;
+.pre-wrapper pre {
+    margin: 0;
+    padding: 20px;
     color: #f8f8f2;
-    font-size: 0.85rem;
     overflow-x: auto;
-    text-align: left;
+}
+
+.dica-block {
+    background: #f0f7ff;
+    border-left: 5px solid #2196f3;
+    padding: 15px;
+    border-radius: 4px;
 }
 
 .btn-fechar {
     align-self: flex-end;
-    background: #ff4757;
+    padding: 10px 25px;
+    background: #333;
     color: white;
     border: none;
-    padding: 8px 15px;
     border-radius: 6px;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
 }
 
-@keyframes slideIn {
+@keyframes slideRight {
     from { opacity: 0; transform: translateX(20px); }
     to { opacity: 1; transform: translateX(0); }
 }
